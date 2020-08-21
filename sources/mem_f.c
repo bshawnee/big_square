@@ -5,7 +5,7 @@ void	free_mem(int **matrix)
 	int i;
 
 	i = 0;
-	while (i < g_len)
+	while (i <= g_len)
 	{
 		free(matrix[i]);
 		i++;
@@ -22,7 +22,7 @@ int		**take_memory(void)
 	map = (int**)malloc(sizeof(int*) * g_len + 1);
 	if (!map)
 		return (NULL);
-	while (i < g_len)
+	while (i <= g_len)
 	{
 		map[i] = (int*)malloc(sizeof(int) * g_wid + 1);
 		if (!map[i])

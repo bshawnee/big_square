@@ -24,19 +24,32 @@ int		take_params(char *file)
 
 int		**fill_matrix(char *file)
 {
+	int i;
 	int **matrix;
 	int fd;
 	char buf[BUFFSIZE];
 	int j;
 
+	i = 0;
+	j = 0;
 	matrix = take_memory();
 	fd = open(file, O_RDONLY);
+
 	while (read(fd, buf, BUFFSIZE) && buf[0] != '\n')
 		;
-	for (int i = 0; i < g_len; i++)
+	while (read(fd, buf, BUFFSIZE))
 	{
-		j = 0;
-		while (read(fd, buf, BUFFSIZE) && buf[0] != '\n')
+		if (buf[0] == '\n')
+		{
+			if (j != g_wid)
+			{
+				free_mem(matrix);
+				return(NULL);
+			}
+			j = 0;
+			i++;
+		}
+		else
 		{
 			if (buf[0] == g_params[0])
 				matrix[i][j] = 1;
@@ -49,11 +62,11 @@ int		**fill_matrix(char *file)
 			}
 			j++;
 		}
-		if (j != g_wid)
-		{
-			free_mem(matrix);
-			return (NULL);
-		}
+	}
+	if (i != g_len)
+	{
+		free_mem(matrix);
+		return (NULL);
 	}
 	close(fd);
 	return (matrix);
@@ -74,6 +87,7 @@ int		save_map(void)
 	while (read(0, buf, BUFFSIZE))
 		write(fd, &buf[0], 1);
 	close(fd);
-	bsq(".tmp_file.tmp");
+	if (bsq(".tmp_file.tmp") == -1)
+		return (-1);
 	return(0);
 }
