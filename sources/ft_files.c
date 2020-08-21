@@ -7,11 +7,34 @@ void	ft_putchar(char c)
 
 void	ft_putstr(char *str)
 {
-	if (*str)
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
 	{
-		ft_putchar(*str);
-		ft_putstr(str + 1);
+		ft_putchar(str[i]);
+		i++;
 	}
+}
+
+void	ft_putnbr(int nb)
+{
+	unsigned int nbr;
+
+	if (nb < 0)
+	{
+		nbr = -nb;
+		ft_putchar('-');
+	}
+	else
+		nbr = nb;
+	if (nbr >= 10)
+	{
+		ft_putnbr(nbr / 10);
+		ft_putnbr(nbr % 10);
+	}
+	else if (nbr < 10)
+		ft_putchar(nbr + '0');
 }
 
 int		ft_atoi(char *str)
@@ -39,24 +62,4 @@ int		ft_atoi(char *str)
 	if (n == 1)
 		nbr = -nbr;
 	return (nbr);
-}
-
-void	ft_putnbr(int nb)
-{
-	unsigned int nbr;
-
-	if (nb < 0)
-	{
-		nbr = -nb;
-		ft_putchar('-');
-	}
-	else
-		nbr = nb;
-	if (nbr >= 10)
-	{
-		ft_putnbr(nbr / 10);
-		ft_putnbr(nbr % 10);
-	}
-	else if (nbr < 10)
-		ft_putchar(nbr + '0');
 }

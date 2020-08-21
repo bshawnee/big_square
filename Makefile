@@ -4,20 +4,22 @@ CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
-SRC = main.c
-
-BUILDDIR = build
-
+SRC =	sources/bsq.c \
+		sources/fd_f.c \
+		sources/ft_files.c \
+		sources/mem_f.c \
+		sources/params.c \
+		sources/main.c
 OBJ = $(SRC:.c = .o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(SRC)
 	$(CC) $(FLAGS) -c $(SRC) -I includes/
-	$(CC) *.o -o $(NAME)
+	$(CC) $(OBJ) -o $(NAME)
 
 clean:
-	rm -f $(OBJ)
+	rm -f *.o
 
 fclean: clean
 	rm -f $(NAME)
