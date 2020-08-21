@@ -1,15 +1,5 @@
 #include "../includes/main.h"
 
-void	print_matrix(int **mtx)
-{
-	for (int i = 0; i < g_len; i++)
-	{
-		for (int j = 0; j < g_wid; j++)
-			ft_putnbr(mtx[i][j]);
-		ft_putchar('\n');
-	}
-}
-
 int		main(int argc, char **argv)
 {
 	if (argc > 1)

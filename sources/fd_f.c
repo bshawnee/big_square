@@ -62,6 +62,11 @@ int		**fill_matrix(char *file)
 			}
 			j++;
 		}
+		if (i > g_len)
+		{
+			free_mem(matrix);
+			return (NULL);
+		}
 	}
 	if (i != g_len)
 	{

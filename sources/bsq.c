@@ -30,16 +30,54 @@ void	find_bsq(int **map)
 			}
 }
 
+void	print_one_rowcol(int **map)
+{
+	int one;
+
+	one = 1;
+	for (int i = 0; i < g_len; i++)
+	{
+		for (int j = 0; j <  g_wid; j++)
+		{
+			if (map[i][j] == 0)
+				ft_putchar(g_params[1]);
+			else if (map[i][j] == 1 && one)
+			{
+				one = 0;
+				ft_putchar(g_params[2]);
+			}
+			else
+				ft_putchar(g_params[0]);
+		}
+		ft_putchar('\n');
+	}
+}
+
 void	print_bsq(int **map)
 {
+	int one_sq;
+
+	one_sq = 0;
+	if (g_s == 1)
+		one_sq = 1;
+	if (g_len == 1 || g_wid == 1)
+	{
+		print_one_rowcol(map);
+		return ;
+	}
 	for (int i = 0; i < g_len; i++)
 	{
 		for (int j = 0; j < g_wid; j++)
 		{
 			if (map[i][j] == 0)
 				ft_putchar(g_params[1]);
+			else if (one_sq == 1 && map[i][j] == 1)
+			{
+				ft_putchar(g_params[2]);
+				one_sq++;
+			}
 			else if (j > g_pos[1] && j <= g_pos[3] &&
-					i > g_pos[0] && i <= g_pos[2])
+					 i > g_pos[0] && i <= g_pos[2] && !one_sq)
 				ft_putchar(g_params[2]);
 			else
 				ft_putchar(g_params[0]);
