@@ -44,6 +44,7 @@ int		ft_atoi(char *str)
 	int		nbr;
 
 	i = 0;
+	n = 0;
 	nbr = 0;
 	while ((str[i] == ' ' || str[i] == '\t' ||
 			str[i] == '\n') && str[i] != '\0')

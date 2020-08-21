@@ -19,7 +19,14 @@ int		main(int argc, char **argv)
 			clear_params();
 			if (bsq(argv[i]) == -1)
 				ft_putstr("Map error.\n");
+			if (i != argc - 1)
+				ft_putchar('\n');
 		}
+	}
+	else
+	{
+		save_map();
+		open(".tmp_file.tmp", O_TRUNC);
 	}
 	return (0);
 }

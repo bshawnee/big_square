@@ -51,7 +51,6 @@ void	print_bsq(int **map)
 int		bsq(char *file)
 {
 	int	**map;
-
 	if (take_params(file) == -1)
 		return (-1);
 	if (update_params() == -1)
@@ -61,5 +60,6 @@ int		bsq(char *file)
 		return (-1);
 	find_bsq(map);
 	print_bsq(map);
+	free_mem(map);
 	return (0);
 }

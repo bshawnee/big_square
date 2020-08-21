@@ -18,6 +18,7 @@ void	ft_putnbr(int nb);
 int		ft_atoi(char *str);
 void	ft_putstr(char *str);
 
+int		save_map(void);
 void	free_mem(int **matrix);
 int		**take_memory(void);
 

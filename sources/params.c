@@ -7,8 +7,10 @@ void	clear_params(void)
 	g_s = 0;
 	for (int i = 0; i < 14; i++)
 		g_params[i] = 0;
+	g_params[14] = '\0';
 	for (int i = 0; i < 4; i++)
 		g_pos[i] = 0;
+	g_pos[4] = '\0';
 }
 
 int		update_params(void)

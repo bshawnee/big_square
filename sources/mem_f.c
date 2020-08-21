@@ -5,7 +5,7 @@ void	free_mem(int **matrix)
 	int i;
 
 	i = 0;
-	while (i <= g_len)
+	while (i < g_len)
 	{
 		free(matrix[i]);
 		i++;
