@@ -11,3 +11,9 @@ The "genmap.pl" takes 3 arguments X Y Z, where X is the width, Y is the height a
 1. run "make" in terminal
 2. run command: "perl genmap.pl 10 10 1 | ./big_square" or you can run "./big_square" and paste coppied map from "genmap.pl"
 You can choose the size of the map and the percentage of obstacles.
+
+## Dependencies:
+
+- make
+- gcc
+- perl
