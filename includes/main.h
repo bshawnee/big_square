@@ -6,8 +6,8 @@
 #define BUFFSIZE 1
 #define TRUE	1
 
-int		g_pos[4];
-char	g_params[14];
+int		g_pos[5];
+char	g_params[15];
 int		g_s;
 int		g_wid;
 int		g_len;

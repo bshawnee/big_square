@@ -1,4 +1,6 @@
-NAME = bsq
+NAME = big_square
+
+CC =	gcc
 
 SRC =	sources/bsq.c \
 		sources/fd_f.c \
@@ -7,23 +9,18 @@ SRC =	sources/bsq.c \
 		sources/params.c \
 		sources/main.c
 
-BUILDDIR=build
+OBJ = $(SRC:.c=.o)
 
-OBJ = build/*.o
 
 FLAGS = -Wall -Wextra -Werror -g
 
-.PHONY: all clean fclean re
-
 all: $(NAME)
 
-$(NAME): $(SRC)
-	$(CC) $(SRC) $(FLAGS) -c
-	mv *.o build
-	$(CC) $(OBJ) -o $(NAME)
+$(NAME): $(OBJ) $(HEADERS)
+	$(CC) $(SRC) $(FLAGS) -o $(NAME)
 
 clean:
-	rm -f build/*.o
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
